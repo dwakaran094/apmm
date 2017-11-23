@@ -1,63 +1,32 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
-  <groupId>com.ibm.in.gbs</groupId>
-  <artifactId>apmm</artifactId>
+  <groupId>com.example</groupId>
+  <artifactId>shop</artifactId>
+  <packaging>war</packaging>
   <version>1.0</version>
-  <packaging>jar</packaging>
-
-  <name>apmm</name>
+  <name>shop Maven Webapp</name>
   <url>http://maven.apache.org</url>
-  <description>
-  This is a demo of Maven.
-  </description>
-    
-  <distributionManagement> <!-- Distribution Management, provide ID and URL, can be Maven central repository URL or client URL-->
-	<repository>
-		<id>ProdRepo</id>
-		<url>file:///C:/Repo</url>	
-		</repository> 
-  </distributionManagement>
-  
-  <build>
-	<plugins>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-compiler-plugin</artifactId>
-			<version>3.1</version>
-			<configuration>
-				<source>1.7</source>
-				<target>1.7</target>
-			</configuration>
-		</plugin>	
-	</plugins>
-  </build>
-  
-  <reporting>
-	<plugins>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-compiler-plugin</artifactId>
-			<version>3.1</version>
-			<configuration>
-				<source>1.7</source>
-				<target>1.7</target>
-			</configuration>
-		</plugin>	
-	</plugins>
-  
-  </reporting>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version> <!-- Junit version is being reset to the compatible version from 3.8.1 to 4.12. Maven automatically saving(central to Local) the JARs in the clssspath so that minimizing the time and effort-->
+      <version>3.8.1</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
+  <build>
+    <finalName>shop</finalName>
+	<plugins>
+		<plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        
+        <configuration>
+		<id>deploymentRepo</id>
+          <url>http://localhost:5000/manager/text</url>
+        </configuration>
+      </plugin>
+	</plugins>
+  </build>
 </project>
